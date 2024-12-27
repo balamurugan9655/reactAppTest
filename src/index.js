@@ -9,10 +9,10 @@ import NoPage from "./page/noPage";
 
 export default function App() {
   return(
-    <BrowserRouter basename="reactAppTest">
+    <BrowserRouter>
       <Routes>
         <Route basename="/" path="/" element={<Layout />} >
-          <Route index element={<Home />} />
+          <Route basename="reactAppTest/" index element={<Home />} />
           <Route basename="reactAppTest/contact" path="contact" element={<Contact />} />
           <Route basename="reactAppTest/blog" path="blog" element={<Blog />} />
           <Route basename="*" path="*" element={<NoPage />} />

@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prdeploy": "npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "react-router-dom": "^7.0.2"
   }
 }

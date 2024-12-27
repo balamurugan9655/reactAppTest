@@ -11,11 +11,11 @@ export default function App() {
   return(
     <BrowserRouter basename="reactAppTest">
       <Routes>
-        <Route path="/" element={<Layout />} >
+        <Route basename="/" path="/" element={<Layout />} >
           <Route index element={<Home />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="*" element={<NoPage />} />
+          <Route basename="reactAppTest/contact" path="contact" element={<Contact />} />
+          <Route basename="reactAppTest/blog" path="blog" element={<Blog />} />
+          <Route basename="*" path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

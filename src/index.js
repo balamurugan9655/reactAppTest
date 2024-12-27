@@ -9,7 +9,7 @@ import NoPage from "./page/noPage";
 
 export default function App() {
   return(
-    <BrowserRouter>
+    <BrowserRouter basename="reactAppTest">
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />} />

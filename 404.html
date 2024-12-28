@@ -5,3 +5,30 @@
   </head>
   <body></body>
 </html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Not Found</title>
+    <script>
+      // Redirect to index.html with the same path
+      (function () {
+        // Get the current path after the domain
+        var path = window.location.pathname;
+
+        // Check if the path starts with the repository name
+        var repo = "/your-repo-name"; // Replace this with your repo name
+        if (path.startsWith(repo)) {
+          // Redirect to index.html while preserving the path
+          var newUrl = repo + "/index.html";
+          window.location.replace(newUrl + "?redirect=" + encodeURIComponent(path));
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <h1>Page Not Found</h1>
+    <p>Redirecting...</p>
+  </body>
+</html>

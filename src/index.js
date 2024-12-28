@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom/client' ;
-import { BrowserRouter, Routes , Route } from "react-router-dom";
+import { HashRouter as Router, Routes , Route } from "react-router-dom";
 import Layout from "./page/layout";
 import Home from "./page/home";
 import Contact from "./page/contact";
@@ -9,7 +9,7 @@ import NoPage from "./page/noPage";
 
 export default function App() {
   return(
-    <BrowserRouter basename="reactAppTest">
+    <Router>
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />} />
@@ -18,7 +18,7 @@ export default function App() {
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 const r1 = ReactDOM.createRoot(document.getElementById('root'))

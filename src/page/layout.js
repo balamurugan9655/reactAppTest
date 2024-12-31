@@ -1,3 +1,4 @@
+import React from "react";
 import { Outlet,Link } from "react-router-dom";
 // import { Navbar, Nav, Container } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
@@ -5,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+//import { Spinner } from "react-bootstrap";
 //import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

@@ -1,4 +1,6 @@
+import { useState,useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel';
+import { Spinner } from "react-bootstrap";
 //import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import img1 from './image/HomePage-slider-img1.jpg';
 import img2 from './image/HomePage-slider-img2.jpg';
@@ -18,6 +20,30 @@ const cardData = [
   { id: 7, title: 'Card 7', text: 'This is card 7', image: 'https://via.placeholder.com/150' },
   { id: 8, title: 'Card 8', text: 'This is card 8', image: 'https://via.placeholder.com/150' },
 ];
+
+const LoadingExample = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000); // Simulate loading for 3 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
+      {loading ? (
+        <Spinner animation="border" role="status" variant="primary">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      ) : (
+        <h1>Content Loaded</h1>
+      )}
+      <Button variant="primary" className="mt-3" onClick={() => setLoading(true)}>
+        Reload
+      </Button>
+    </div>
+  );
+};
 
 const Home = () => {
     //return <h1>This Is Home Page</h1>
@@ -68,6 +94,7 @@ const Home = () => {
           </Col>
         ))}
       </Row>
+      <LoadingExample/>
     </Container>
       
       </>

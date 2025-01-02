@@ -1,6 +1,7 @@
-import { useState,useEffect } from "react";
+// import { useState } from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import { Spinner } from "react-bootstrap";
+// import { ProgressBar } from "react-bootstrap";
+//import { useLocation } from "react-router-dom";
 //import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import img1 from './image/HomePage-slider-img1.jpg';
 import img2 from './image/HomePage-slider-img2.jpg';
@@ -21,34 +22,171 @@ const cardData = [
   { id: 8, title: 'Card 8', text: 'This is card 8', image: 'https://via.placeholder.com/150' },
 ];
 
-const LoadingExample = () => {
-  const [loading, setLoading] = useState(true);
+/*const LoadingExample = () => {
+  const location = useLocation();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000); // Simulate loading for 3 seconds
-    return () => clearTimeout(timer);
-  }, []);
+    let interval;
+    setProgress(0);
+
+    // Simulate progress increase
+    interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return oldProgress + 10; // Adjust speed here
+      });
+    }, 100); // Adjust speed here
+
+    // Clear progress when route change completes
+    const timeout = setTimeout(() => {
+      setProgress(100);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+      setProgress(0);
+    };
+  }, [location]);
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center" style={{ height: '100vh' }}>
-      {loading ? (
-        <Spinner animation="border" role="status" variant="primary">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      ) : (
-        <h1>Content Loaded</h1>
-      )}
-      <Button variant="primary" className="mt-3" onClick={() => setLoading(true)}>
-        Reload
-      </Button>
+    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1030 }}>
+      <ProgressBar now={progress} striped animated style={{ height: '4px' }} />
     </div>
   );
-};
+};*/
+
+/*const TopProgressBar = ({ onReset }) => {
+  const location = useLocation();
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let interval;
+    setProgress(0);
+
+    // Simulate progress increase
+    interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return oldProgress + 10; // Adjust speed here
+      });
+    }, 100); // Adjust speed here
+
+    // Clear interval when unmounting or location changes
+    return () => {
+      clearInterval(interval);
+    };
+  }, [location]);
+
+  const resetProgress = () => {
+    setProgress(0);
+    onReset();
+  };
+
+  return (
+    <div>
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1030 }}>
+        <ProgressBar now={progress} striped animated style={{ height: '4px' }} />
+      </div>
+      {progress === 100 && (
+        <div className="text-center mt-3">
+          <Button variant="primary" onClick={resetProgress}>
+            Reset Progress Bar
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};*/
+
+/*const TopLoadingBar = () => {
+  const [progress, setProgress] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  function handleButtonClick() 
+  {
+    setLoading(true); // Show progress bar
+    setProgress(0);   // Reset progress
+    let value = 0;
+
+    const interval = setInterval(() => {
+      value += 10; // Increment progress
+      setProgress(value);
+      if (value >= 100) {
+        clearInterval(interval); // Stop progress update
+        setTimeout(() => setLoading(false), 500); // Hide progress bar after completion
+      }
+    }, 300); // Adjust speed of loading here
+  };
+
+  return (
+    <div>
+      {/* Top fixed progress bar */
+      /*{loading && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            zIndex: 9999,
+          }}
+        >
+          <ProgressBar now={progress} style={{ height: "5px" }} />
+        </div>
+      )}
+      <div className="container mt-5">
+        <h3>Top Loading Bar Example</h3>
+        <Button onClick={handleButtonClick}>Start Loading</Button>
+      </div>
+    </div>
+  );
+};*/
 
 const Home = () => {
     //return <h1>This Is Home Page</h1>
+  //   const [progress, setProgress] = useState(0);
+  // const [loading, setLoading] = useState(false);
+
+  // function handleButtonClick() 
+  // {
+  //   setLoading(true); // Show progress bar
+  //   setProgress(0);   // Reset progress
+  //   let value = 0;
+
+  //   const interval = setInterval(() => {
+  //     value += 10; // Increment progress
+  //     setProgress(value);
+  //     if (value >= 100) {
+  //       clearInterval(interval); // Stop progress update
+  //       setTimeout(() => setLoading(false), 1000); // Hide progress bar after completion
+  //     }
+  //   }, 500); // Adjust speed of loading here
+  // };
     return(
       <>
+      {/* <div>
+      {loading && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            zIndex: 9999,
+          }}
+        >
+          <ProgressBar now={progress} style={{ height: "5px" }} />
+        </div>
+      )}
+      </div> */}
           <Carousel>
       <Carousel.Item>
         {/* <ExampleCarouselImage text="First slide" /> */}
@@ -94,7 +232,13 @@ const Home = () => {
           </Col>
         ))}
       </Row>
-      <LoadingExample/>
+      {/* <LoadingExample/> */}
+      {/* <TopProgressBar onReset={() => console.log('Progress Bar Reset')} /> */}
+      {/* <TopLoadingBar/> */}
+      {/* <Container>
+      <Button onClick={handleButtonClick}>Start Loading</Button>
+        <Button onClick={handleButtonClick}>Click Hera</Button>
+      </Container> */}
     </Container>
       
       </>
